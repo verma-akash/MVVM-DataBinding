@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+        <item name="android:textViewStyle">@style/GoogleFontsStyle_Regular</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="AppTheme">
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="GoogleFontsStyle_Bold" parent="AppTheme" type="style">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="GoogleFontsStyle_BoldItalic" parent="AppTheme">
+        <item name="android:fontFamily">@font/google_sans_bolditalic</item>
+    </style>
+
+    <style name="GoogleFontsStyle_Italic" parent="AppTheme">
+        <item name="android:fontFamily">@font/google_sans_italic</item>
+    </style>
+
+    <style name="GoogleFontsStyle_Medium" parent="AppTheme">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="GoogleFontsStyle_MediumItalic" parent="AppTheme">
+        <item name="android:fontFamily">@font/google_sans_mediumitalic</item>
+    </style>
+
+    <style name="GoogleFontsStyle_Regular" parent="AppTheme">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:bind="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.morty.rick.rickmorty.models.Character" />
+
+        <variable
+            name="clickHandler"
+            type="com.morty.rick.rickmorty.ui.main.fragments.characters.CharactersRecyclerViewAdapter.ClickHandler" />
+    </data>
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_background">
+
+            <ImageView
+                android:id="@+id/character_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/characters"
+                android:onClick="@{(v) -> clickHandler.onCharacterImageClick(v, character.name)}"
+                android:scaleType="fitXY"
+                bind:imageUrl="@{character.image}"
+                app:layout_constraintDimensionRatio="1:1" />
+
+            <TextView
+                android:id="@+id/character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparentGrey"
+                android:padding="14dp"
+                android:text="@{character.name}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/character_image"
+                tools:text="Rick Sanchez" />
+
+            <TextView
+                android:id="@+id/status_tag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/status"
+                android:textColor="@color/darkGray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/character_status"
+                app:layout_constraintTop_toBottomOf="@id/character_image" />
+
+            <TextView
+                android:id="@+id/character_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="@{character.status}"
+                app:layout_constraintLeft_toRightOf="@id/status_tag"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_image"
+                tools:text="Alive" />
+
+            <TextView
+                android:id="@+id/species_tag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/species"
+                android:textColor="@color/darkGray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/character_species"
+                app:layout_constraintTop_toBottomOf="@id/character_status" />
+
+            <TextView
+                android:id="@+id/character_species"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="@{character.species}"
+                app:layout_constraintLeft_toRightOf="@id/species_tag"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_status"
+                tools:text="Human" />
+
+            <TextView
+                android:id="@+id/gender_tag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/gender"
+                android:textColor="@color/darkGray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/character_gender"
+                app:layout_constraintTop_toBottomOf="@id/character_species" />
+
+            <TextView
+                android:id="@+id/character_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="@{character.gender}"
+                app:layout_constraintLeft_toRightOf="@id/gender_tag"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_species"
+                tools:text="Male" />
+
+            <TextView
+                android:id="@+id/origin_tag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/origin"
+                android:textColor="@color/darkGray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/character_origin"
+                app:layout_constraintTop_toBottomOf="@id/character_gender" />
+
+            <TextView
+                android:id="@+id/character_origin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="@{character.origin.name}"
+                app:layout_constraintLeft_toRightOf="@id/origin_tag"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_gender"
+                tools:text="Earth" />
+
+            <TextView
+                android:id="@+id/last_location_tag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/last_location"
+                android:textColor="@color/darkGray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/character_last_location"
+                app:layout_constraintTop_toBottomOf="@id/character_origin" />
+
+            <TextView
+                android:id="@+id/character_last_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="@{character.location.name}"
+                app:layout_constraintLeft_toRightOf="@id/last_location_tag"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_origin"
+                tools:text="unknown" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>
+
