@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "character")
+//@Entity(tableName = "character")
 public class Character {
 
     @SerializedName("id")
