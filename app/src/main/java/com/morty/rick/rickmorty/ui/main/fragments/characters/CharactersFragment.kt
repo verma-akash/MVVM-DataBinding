@@ -2,17 +2,15 @@ package com.morty.rick.rickmorty.ui.main.fragments.characters
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.morty.rick.rickmorty.R
-import com.morty.rick.rickmorty.models.Character
-import com.morty.rick.rickmorty.models.Characters
+import com.morty.rick.rickmorty.data.models.Character
+import com.morty.rick.rickmorty.data.models.Characters
 import com.morty.rick.rickmorty.ui.base.BaseFragment
 
 /**
@@ -53,7 +51,7 @@ class CharactersFragment : BaseFragment(), CharactersRecyclerViewAdapter.ScrollI
     }
 
     private var charactersListObserver = Observer<Characters> {
-        if (it?.results?.size!! > 0) {
+        if (it?.results != null) {
             val currentSize = charactersList.size
             charactersList.addAll(it.results)
             charactersRecyclerViewAdapter?.notifyItemInserted(currentSize)
@@ -62,6 +60,6 @@ class CharactersFragment : BaseFragment(), CharactersRecyclerViewAdapter.ScrollI
 
     override fun loadCharacters() {
         pageNo++
-        charactersViewModel.fetchAllCharacters(pageNo)
+        charactersViewModel.fetchAllCharacters(pageNo.toString())
     }
 }

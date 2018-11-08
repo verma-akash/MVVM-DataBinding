@@ -1,5 +1,7 @@
 
-package com.morty.rick.rickmorty.models;
+package com.morty.rick.rickmorty.data.models;
+
+import android.arch.persistence.room.ColumnInfo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,15 +10,22 @@ public class Info {
 
     @SerializedName("count")
     @Expose
+    @ColumnInfo(name = "count")
     private Integer count;
+
     @SerializedName("pages")
     @Expose
+    @ColumnInfo(name = "pages")
     private Integer pages;
+
     @SerializedName("next")
     @Expose
+    @ColumnInfo(name = "next")
     private String next;
+
     @SerializedName("prev")
     @Expose
+    @ColumnInfo(name = "prev")
     private String prev;
 
     public Integer getCount() {

@@ -3,7 +3,6 @@ package com.morty.rick.rickmorty.injection.component;
 import com.morty.rick.rickmorty.RickAndMortyApplication
 import com.morty.rick.rickmorty.injection.modules.ApplicationModule
 import com.morty.rick.rickmorty.injection.scopes.ApplicationScope
-import com.morty.rick.rickmorty.ui.main.fragments.characters.CharactersRecyclerViewAdapter
 import dagger.BindsInstance
 import dagger.Component
 
@@ -30,6 +29,6 @@ interface ApplicationComponent {
 
     fun inject(rickAndMortyApplication: RickAndMortyApplication)
 
-    fun inject(charactersRecyclerViewAdapter: CharactersRecyclerViewAdapter)
+//    fun inject(charactersRecyclerViewAdapter: CharactersRecyclerViewAdapter)
 
 }

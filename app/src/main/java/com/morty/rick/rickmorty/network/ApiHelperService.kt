@@ -1,7 +1,7 @@
 package com.morty.rick.rickmorty.network
 
-import com.morty.rick.rickmorty.models.Characters
-import io.reactivex.Observable
+import com.morty.rick.rickmorty.data.models.Characters
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,6 +11,6 @@ import retrofit2.http.Query
 interface ApiHelperService {
 
     @GET("character/")
-    fun getAllCharacters(@Query("page") pageNo: String): Observable<Characters>
+    fun getAllCharacters(@Query("page") pageNo: String): Call<Characters>
 
 }

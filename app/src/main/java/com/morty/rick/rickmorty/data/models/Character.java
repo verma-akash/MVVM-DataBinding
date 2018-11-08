@@ -1,6 +1,10 @@
 
-package com.morty.rick.rickmorty.models;
+package com.morty.rick.rickmorty.data.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
@@ -8,45 +12,67 @@ import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
+@Entity(tableName = "character")
 public class Character {
 
     @SerializedName("id")
     @Expose
+    @PrimaryKey
+    @ColumnInfo(name = "character_id")
     private Integer id;
+
     @SerializedName("name")
     @Expose
+    @ColumnInfo(name = "name")
     private String name;
+
     @SerializedName("status")
     @Expose
+    @ColumnInfo(name = "status")
     private String status;
+
     @SerializedName("species")
     @Expose
+    @ColumnInfo(name = "species")
     private String species;
+
     @SerializedName("type")
     @Expose
+    @ColumnInfo(name = "type")
     private String type;
+
     @SerializedName("gender")
     @Expose
+    @ColumnInfo(name = "gender")
     private String gender;
+
     @SerializedName("origin")
     @Expose
+    @Embedded
     private Origin origin;
+
     @SerializedName("location")
     @Expose
+    @Embedded
     private Location location;
+
     @SerializedName("image")
     @Expose
+    @ColumnInfo(name = "image")
     private String image;
-    @SerializedName("episode")
-    @Expose
-    private List<String> episode = null;
+
+//    @SerializedName("episode")
+//    @Expose
+//    private List<String> episode = null;
+
     @SerializedName("url")
     @Expose
+    @ColumnInfo(name = "url")
     private String url;
+
     @SerializedName("created")
     @Expose
+    @ColumnInfo(name = "created")
     private String created;
 
     public Integer getId() {
@@ -127,13 +153,13 @@ public class Character {
         this.image = image;
     }
 
-    public List<String> getEpisode() {
-        return episode;
-    }
-
-    public void setEpisode(List<String> episode) {
-        this.episode = episode;
-    }
+//    public List<String> getEpisode() {
+//        return episode;
+//    }
+//
+//    public void setEpisode(List<String> episode) {
+//        this.episode = episode;
+//    }
 
     public String getUrl() {
         return url;

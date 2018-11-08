@@ -16,6 +16,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -27,6 +28,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
@@ -76,8 +78,18 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
-    //ButterKnife
-    //implementation 'com.jakewharton:butterknife:8.8.1'
-    //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-//    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //Room
+    implementation "android.arch.persistence.room:runtime:$arch_version"
+    kapt "android.arch.persistence.room:compiler:$arch_version"
+
+    implementation 'com.google.android.gms:play-services-base:16.0.1'
+    implementation 'com.google.android.gms:play-services-identity:16.0.0'
+//    implementation "com.google.android.gms:play-services-gcm:16.0.0"
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:16.0.0'
+
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
 }
+
+//apply plugin: 'com.google.gms.google-services'
+

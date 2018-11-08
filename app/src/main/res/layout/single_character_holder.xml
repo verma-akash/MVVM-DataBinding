@@ -6,7 +6,7 @@
 
         <variable
             name="character"
-            type="com.morty.rick.rickmorty.models.Character" />
+            type="com.morty.rick.rickmorty.data.models.Character" />
 
         <variable
             name="clickHandler"

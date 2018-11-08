@@ -1,40 +1,45 @@
 package com.morty.rick.rickmorty.ui.main.fragments.characters
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
-import com.morty.rick.rickmorty.models.Characters
-import com.morty.rick.rickmorty.network.ApiHelperService
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.morty.rick.rickmorty.data.DataManager
+import com.morty.rick.rickmorty.data.models.Characters
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
  * Created by Akash Verma on 08/10/18.
  */
-class CharactersViewModel @Inject constructor(private var compositeDisposable: CompositeDisposable,
-                                              private var apiHelperService: ApiHelperService) : ViewModel() {
+class CharactersViewModel @Inject constructor(private var dataManager: DataManager, private var compositeDisposable: CompositeDisposable) : ViewModel() {
 
-    private var characters: MutableLiveData<Characters> = MutableLiveData()
+    private lateinit var characters: LiveData<Characters>
+    private var charactersMediatorLiveData = MediatorLiveData<Characters>()
 
-    fun fetchAllCharacters(pageNo: Int) {
-        Log.e("apiHelperService", apiHelperService.toString())
-        Log.e("compositeDisposable", compositeDisposable.toString())
+    fun fetchAllCharacters(pageNo: String) {
 
-        compositeDisposable.add(apiHelperService
-                .getAllCharacters(pageNo.toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    characters.postValue(it)
-                }, {
-                    Log.e("error", it.toString())
-                }))
+        characters = dataManager.getAllCharacters(pageNo)
+
+        charactersMediatorLiveData.addSource(characters, {
+            charactersMediatorLiveData.postValue(it)
+
+            if(pageNo == "1")
+                dataManager.saveCharacters(it)
+        })
+
+//        compositeDisposable
+//                .add(dataManager
+//                        .getAllCharacters(pageNo)
+//                        ?.subscribeOn(Schedulers.io())
+//                        ?.observeOn(AndroidSchedulers.mainThread())
+//                        ?.subscribe({
+//                            characters.postValue(it)
+//                        }, {
+//
+//                        })!!)
     }
 
     fun getAllCharacters(): LiveData<Characters> {
-        return characters
+        return charactersMediatorLiveData
     }
 }

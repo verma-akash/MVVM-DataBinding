@@ -6,14 +6,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.morty.rick.rickmorty.R
+import com.morty.rick.rickmorty.data.models.Character
 import com.morty.rick.rickmorty.databinding.SingleCharacterHolderBinding
-import com.morty.rick.rickmorty.models.Character
 
 /**
  * Created by Akash Verma on 08/10/18.
@@ -21,8 +17,8 @@ import com.morty.rick.rickmorty.models.Character
 class CharactersRecyclerViewAdapter constructor() : RecyclerView.Adapter<CharactersRecyclerViewAdapter.CharacterHolder>() {
 
     private var context: Context? = null
-    var listOfCharacters: List<Character>? = null
-    var scrollInteractionListener: ScrollInteractionListener? = null
+    private var listOfCharacters: List<Character>? = null
+    private var scrollInteractionListener: ScrollInteractionListener? = null
 
     constructor(context: Context?, listOfCharacters: List<Character>?,
                 scrollInteractionListener: ScrollInteractionListener) : this() {
@@ -38,6 +34,7 @@ class CharactersRecyclerViewAdapter constructor() : RecyclerView.Adapter<Charact
 
         singleCharacterHolderBinding.clickHandler = ClickHandler(context)
 
+//        Log.e("onCreateViewHolder", onCreate.toString())
         return CharacterHolder(singleCharacterHolderBinding)
     }
 
@@ -46,7 +43,7 @@ class CharactersRecyclerViewAdapter constructor() : RecyclerView.Adapter<Charact
     }
 
     override fun onBindViewHolder(characterHolder: CharacterHolder, position: Int) {
-
+//        Log.e("onBindViewHolder", onBind.toString())
         characterHolder.characterBinding.character = listOfCharacters!![position]
 
         if (position + 2 == listOfCharacters?.size ?: 2)
@@ -67,5 +64,10 @@ class CharactersRecyclerViewAdapter constructor() : RecyclerView.Adapter<Charact
         fun onCharacterImageClick(view: View, characterName: String?) {
             Toast.makeText(context, characterName, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    companion object {
+        var onCreate = 0
+        var onBind = 0
     }
 }
